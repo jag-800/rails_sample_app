@@ -2,5 +2,5 @@
 
 <% @lists.each do |list| %>
   <P>タイトル</P>
-  <span><%= list.title %></span>
+  <span><%= list.title list_path(list.id) %></span>
 <% end %>
