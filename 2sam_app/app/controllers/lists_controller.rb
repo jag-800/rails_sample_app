@@ -4,12 +4,13 @@ class ListsController < ApplicationController
   end
   
   def create
-    list = List.new(list_params)
+    @list = List.new(list_params)
     if list.save
+      flash[:notice] = "投稿に成功しました。"
       redirect_to list_path(@list.id)
     else
-      @lists = List.all
-      render :index
+      flash.now[:alert] = "投稿に失敗しました。"
+      render :new
     end
   end
 
